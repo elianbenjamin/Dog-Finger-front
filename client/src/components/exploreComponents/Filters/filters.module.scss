@@ -1,0 +1,195 @@
+@import "../../../style/mixins.scss";
+
+.FiltersContainer {
+    @include flex(center, center);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--shadowBackground);
+    z-index: 10;
+}
+
+.filters {
+    @include flex(flex-start, stretch, column);
+    height: 80%;
+    width: 530px;
+    background-color: var(--color4);
+    border-radius: 15px;
+    position: relative;
+    animation: appear 0.3s;
+    padding: 20px;
+    padding-top: 10px;
+    gap: 15px;
+    overflow: hidden;
+    z-index: 11;
+
+
+    h1 {
+        @include flex(space-between, center);
+        width: 100%;
+        border-bottom: solid var(--color7);
+        height: 65px;
+        padding-right: 10px;
+        line-height: 0.9em;
+
+        .closeButton {
+            @include button();
+            @include flex(center, center);
+            min-height: 40px;
+            min-width: 40px;
+            padding: 10px;
+
+            svg {
+                min-width: 100%;
+                min-height: 100%;
+            }
+        }
+    }
+
+    section {
+        @include flex(flex-start, center, column);
+        background-color: var(--color5);
+        flex: 1;
+        border-radius: 10px;
+        padding: 5px;
+        gap: 5px;
+
+        .title {
+            @include flex(center, center);
+            flex: 1;
+            user-select: none;
+            border-bottom: solid var(--color7) 2px;
+            width: 80%;
+            position: relative;
+        }
+        .content {
+            @include flex(space-evenly, center);
+            flex: 1;
+            width: 100%;
+
+            input {
+                @include input();
+                width: 30%;
+                text-align: center;
+
+                &::placeholder {
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .heightWeightSection {
+        .content {
+            .height {
+                @include flex(space-evenly, center);
+                flex: 1;
+                height: 80%;
+            }
+            .weight {
+                @extend .height;
+                border-left: solid var(--color7) 1px;
+            }
+        }
+    }
+
+    .breedGroupsSection {
+        .title {
+            svg {
+                @include button;
+                height: 95%;
+                max-height: 40px;
+                padding: 0;
+                position: absolute;
+                right: 5%;
+            }
+        }
+        .content {
+            padding: 0 30px;
+            justify-content: flex-start;
+            gap: 5px;
+            overflow: scroll;
+
+            .item {
+                @include button;
+                padding: 0 10px;
+                gap: 5px;
+                text-wrap: nowrap;
+
+                svg {
+                    max-height: 15px;
+                }
+            }
+        }
+    }
+
+    .temperamentsSection {
+        @extend .breedGroupsSection;
+    }
+
+    button {
+        @include button;
+        width: 30%;
+        margin: 0 auto;
+    }
+}
+
+@keyframes appear {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .filters {
+        width: 95%;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .filters {
+
+        section {
+            .title {
+                width: 90%;
+            }
+            .content {
+                input {
+                    width: 40%;
+                }
+            }
+        }
+
+        .temperamentsSection, .breedGroupsSection {
+            .title {
+                justify-content: space-between;
+
+                svg {
+                    position: static;
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .filters {
+        section {
+            .content {
+                input {
+                    width: 45%;
+                }
+            }
+        }
+    }
+}

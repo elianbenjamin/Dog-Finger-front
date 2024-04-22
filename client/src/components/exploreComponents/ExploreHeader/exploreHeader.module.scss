@@ -1,0 +1,80 @@
+@import "../../../style/mixins.scss";
+
+.ExploreHeader {
+    @include flex (space-between, flex-end);
+    position: relative;
+    width: 100%;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    border-bottom: solid var(--color7) 3px;
+    line-height: 2em;
+    gap: 5px;
+
+    .buttons {
+        @include flex(center, center);
+        gap: 25px;
+
+        button {
+            @include button();
+
+            svg {
+                height: 20px;
+                margin-left: 5px;
+            }
+
+            .point {
+                height: 5px;
+                width: 5px;
+                border-radius: 100px;
+                background-color: var(--color7);
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .ExploreHeader {
+        @include flex(flex-start, flex-start, column);
+
+        .buttons {
+            gap: 20px;
+
+            button {
+                line-height: 0.8em;
+
+                svg {
+                    height: 25px;
+                    min-width: 25px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .ExploreHeader {
+        margin-bottom: 5px;
+
+        .buttons {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 50% 50%;
+            align-content: space-around;
+            align-self: stretch;
+            gap: 0;
+
+
+            :nth-child(1) {
+                grid-column: span 2;
+                margin: 3px;
+
+            }
+            :nth-child(2),
+            :nth-child(3) {
+                grid-column: span 1;
+                margin: 3px;
+            }
+        }
+    }
+}

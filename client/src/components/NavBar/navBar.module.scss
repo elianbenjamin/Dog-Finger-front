@@ -1,0 +1,141 @@
+@import "../../style/mixins.scss";
+
+@mixin navBar_Icon($width: 50px, $height: 50px) {
+    height: $height;
+    width: $width;
+    padding: 5px;
+    border-radius: 100px;
+    color: var(--color8);
+}
+
+.NavBar {
+    @include flex(center, center, row);
+    min-height: 70px;
+    max-height: 70px;
+    width: 100%;
+    border-bottom: var(--containerBorder);
+    box-shadow: var(--boxShadow);
+    background-color: var(--color5);
+    position: relative;
+
+    .Container1 {
+        @include flex(center, center, row);
+        flex: 1;
+        height: 100%;
+        gap: 50px;
+
+        .menuIcon {
+            height: 100%;
+            padding: 10px;
+            color: var(--color8);
+            cursor: pointer;
+        }
+
+        .iconContainer {
+            @include flex(center, center);
+            position: relative;
+            z-index: 10;
+            border-radius: 100px;
+            cursor: pointer;
+
+            &:hover .icon {
+                color: var(--color4);
+                background-color: var(--color7);
+            }
+
+            .icon {
+                @include navBar_Icon();
+                transition: color, background-color, 0.2s;
+                position: relative;
+                pointer-events: none;
+            }
+            .icon_on {
+                color: var(--color4);
+                background-color: var(--color7);
+            }
+
+            p {
+                @include toolTip();
+                bottom: -80%;
+            }
+        }
+    }
+
+    .Container2 {
+        @include flex(center, center);
+        flex: 1;
+        height: 100%;
+    }
+
+    .Container3 {
+        @include flex(center, center);
+        flex: 1;
+        height: 100%;
+
+        .iconContainer {
+            position: relative;
+            @include flex(center, center);
+            border-radius: 100px;
+
+            &:hover::after {
+                content: "Mi cuenta";
+                @include toolTip;
+                bottom: -80%;
+                z-index: 100;
+            }
+
+            .icon {
+                @include navBar_Icon();
+                @include flex(center, center);
+                transition: color, background-color, 0.2s;
+                position: relative;
+                cursor: pointer;
+
+                &:hover {
+                    color: var(--color4);
+                    background-color: var(--color7);
+                }
+            }
+            .icon_on {
+                color: var(--color4);
+                background-color: var(--color7);
+            }
+        }
+
+        .button {
+            @include button();
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .NavBar {
+        .Container1 {
+            gap: 25px;
+        }
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .NavBar {
+        .Container1 {
+            width: 250px;
+            gap: 20px;
+            flex: none;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .NavBar {
+        .Container1 {
+            flex: 2;
+        }
+        .Container2 {
+            flex: 8;
+        }
+        .Container3 {
+            display: none;
+        }
+    }
+}

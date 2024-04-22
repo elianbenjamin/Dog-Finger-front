@@ -1,0 +1,107 @@
+@import "../../../style/mixins.scss";
+
+.TmpAndBgPanel {
+    @include flex(space-between, stretch, column);
+    border-radius: 15px;
+    background-color: var(--color5);
+    flex: 1;
+    height: 75vh;
+
+    .buttonsOrTitle {
+        @include flex(space-evenly, center);
+        height: 10%;
+        border-bottom: solid var(--color7) 3px;
+        padding: 5px 3px;
+
+        button {
+            @include button;
+        }
+        .selectedBtn {
+            background-color: var(--color7);
+            color: var(--color4);
+        }
+
+        h3 {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .TmpAndBgPanel {
+        .buttonsOrTitle {
+            button {
+                flex: 1;
+                padding: 2px 5px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1130px) {
+    .TmpAndBgPanel {
+        height: 375px;
+        flex: none;
+        width: 750px;
+        justify-content: flex-start;
+
+        .buttonsOrTitle {
+
+            h3 {
+                display: block;
+            }
+            button {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .TmpAndBgPanel {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .TmpAndBgPanel {
+
+        .buttonsOrTitle {
+            button {
+                display: block
+            }
+            h3 {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 345px) {
+    .TmpAndBgPanel {
+        .buttonsOrTitle {
+            button {
+                padding: 0 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 305px) {
+    .TmpAndBgPanel {
+        height: auto;
+        max-height: auto;
+
+        .buttonsOrTitle {
+            flex-direction: column;
+            height: auto;
+            gap: 5px;
+
+            button {
+                @include flex(center, center);
+                width: 90%;
+                padding: 5px;
+            }
+        }
+    }
+}

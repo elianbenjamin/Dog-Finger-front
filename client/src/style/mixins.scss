@@ -1,0 +1,53 @@
+@mixin flex($just, $align, $dir: row) {
+  display: flex;
+  justify-content: $just;
+  align-items: $align;
+  flex-direction: $dir;
+}
+@mixin input() {
+  height: 27px;
+  border: none;
+  border-radius: 100px;
+  background-color: var(--color2);
+  padding: 0 5px;
+  box-shadow: var(--boxShadow);
+}
+
+@mixin button() {
+  @include flex(center, center);
+  text-decoration: none;
+  font-size: 0.95em;
+  font-family: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  border-radius: 100px;
+  padding: 5px;
+  box-shadow: var(--boxShadow);
+  border: none;
+  background-color: var(--color4);
+  color: var(--color7);
+  transition: color, background-color 0.2s;
+  padding: 5px 20px;
+  height: 28px;
+
+  &:hover {
+    background-color: var(--color7);
+    color: var(--color4);
+  }
+}
+@mixin disabledButton() {
+  color: var(--color7);
+  font-weight: lighter;
+  pointer-events: none;
+}
+@mixin toolTip() {
+  position: absolute;
+  white-space: nowrap;
+  border-radius: 100px;
+  padding: 0 10px;
+  text-align: center;
+  color: var(--color3);
+  background-color: var(--color6);
+  pointer-events: none;
+}
+

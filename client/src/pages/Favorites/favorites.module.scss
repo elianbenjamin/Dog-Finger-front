@@ -1,0 +1,33 @@
+@import "../../style/mixins.scss";
+
+.Favorites {
+    @include flex(flex-start, center, column);
+    flex: 1;
+    animation: favorites-animation 0.2s;
+    padding: 15px 35px;
+    position: relative;
+
+    .favHeader {
+        padding: 5px 0;
+        margin-bottom: 20px;
+        border-bottom: solid var(--color7) 3px;
+        align-self: stretch;
+        line-height: 2em;
+    }
+
+}
+
+@keyframes favorites-animation {
+    from {
+        transform: translateX(100vw);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .Favorites {
+        padding: 15px;
+    }
+}

@@ -1,0 +1,31 @@
+@import '../../../style/mixins.scss';
+
+.Cards {
+  @include flex (center, center);
+  flex: 1;
+  gap: 30px;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 650px;
+  flex-wrap: wrap;
+  transition: transform 0.2s;
+
+  .loaderContainer {
+    @include flex (center, center);
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .Cards {
+    gap: 15px;
+  }
+}
+
+
+
+
+
+
+

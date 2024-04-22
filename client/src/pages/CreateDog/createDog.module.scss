@@ -1,0 +1,39 @@
+@import '../../style/mixins.scss';
+
+.createDog {
+  @include flex(flex-start, stretch, column);
+  animation: move;
+  animation-duration: 0.3s;
+  position: relative;
+  padding: 15px 35px;
+  flex: 1;
+
+  .createDogContent {
+    @include flex (space-between, stretch);
+    gap: 10px;
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 1130px) {
+  .createDog {
+
+    .createDogContent {
+      @include flex (center, center, column);
+    }
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .createDog {
+    padding: 0 15px;
+  }
+}

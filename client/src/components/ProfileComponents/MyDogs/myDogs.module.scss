@@ -1,0 +1,52 @@
+@import "../../../style/mixins.scss";
+
+.MyDogs {
+    @include flex(flex-start, stretch, column);
+    gap: 20px;
+
+    .buttons {
+        @include flex(center, center);
+        align-self: center;
+        padding: 0 25px;
+        gap: 25px;
+        height: 50px;
+        border-bottom: solid var(--color7);
+        position: relative;
+
+        a {
+            @include button;
+        }
+        .selectedBtn {
+            background-color: var(--color7);
+            color: var(--color4);
+        }
+        .animation {
+            animation: refresh ease-in-out 0.3s;
+        }
+    }
+}
+
+@keyframes refresh {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .MyDogs {
+        .buttons {
+            justify-content: space-around;
+            gap: 0;
+            width: 100%;
+            padding: 0;
+
+            a {
+                width: auto;
+                padding: 0 15px;
+            }
+        }
+    }
+}
